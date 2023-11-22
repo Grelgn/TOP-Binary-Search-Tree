@@ -66,4 +66,18 @@ export default class Tree {
 			return tree;
 		}
 	}
+
+	find(value, tree) {
+		if (value < tree.value) {
+			tree.left = this.find(value, tree.left);
+			return tree.left;
+		}
+		if (tree.value < value) {
+			tree.right = this.find(value, tree.right);
+			return tree.right;
+		}
+		if (value === tree.value) {
+			return tree;
+		}
+	}
 }

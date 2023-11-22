@@ -21,3 +21,5 @@ tree.delete(6345, tree.root);
 tree.delete(2, tree.root);
 console.log(tree.root);
 prettyPrint(tree.root);
+
+console.log(tree.find(23, tree.root));
