@@ -1,6 +1,7 @@
-import mergeSort, { removeDuplicates } from "./sortArray";
+import Tree from "./tree";
 
 const test = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-removeDuplicates(test);
-mergeSort(test);
-console.log(test);
+
+const tree = new Tree(test);
+console.log(tree.array);
+console.log(tree.root);
