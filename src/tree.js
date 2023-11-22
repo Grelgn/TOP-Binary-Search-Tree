@@ -3,4 +3,8 @@ export default class Tree {
 		this.array = array;
 		this.root = this.buildTree();
 	}
+
+	buildTree() {
+		this.array = "a";
+	}
 }
