@@ -169,4 +169,9 @@ export default class Tree {
 		}
 		return true;
 	}
+
+	rebalance() {
+		const array = this.inOrder();
+		this.root = this.buildTree(array);
+	}
 }
