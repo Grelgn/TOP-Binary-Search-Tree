@@ -151,4 +151,22 @@ export default class Tree {
 		}
 		return array;
 	}
+
+	isBalanced(tree = this.root, array = []) {
+		const leftHeight = this.height(tree.left);
+		const rightHeight = this.height(tree.right);
+		if (leftHeight - rightHeight < 2 && leftHeight - rightHeight > -2) {
+			array.push(1);
+		} else {
+			array.push(0);
+		}
+		if (tree.left !== null && tree.right !== null) {
+			this.isBalanced(tree.left, array);
+			this.isBalanced(tree.right, array);
+		}
+		if (array.includes(0)) {
+			return false;
+		}
+		return true;
+	}
 }
