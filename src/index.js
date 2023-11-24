@@ -29,4 +29,5 @@ console.log(tree.height(tree.find(23)));
 
 console.log(tree.depth(tree.find(486)));
 console.log(tree.depth(tree.find(7)));
-// tree.depth(tree.find(23, tree.root));
+
+console.log(tree.levelOrder());
