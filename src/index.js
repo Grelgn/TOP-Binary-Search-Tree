@@ -31,3 +31,7 @@ console.log(tree.depth(tree.find(486)));
 console.log(tree.depth(tree.find(7)));
 
 console.log(tree.levelOrder());
+
+console.log(tree.inOrder());
+console.log(tree.preOrder());
+console.log(tree.postOrder());

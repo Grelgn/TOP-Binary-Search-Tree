@@ -98,15 +98,56 @@ export default class Tree {
 		}
 	}
 
-	levelOrder(array = [], queue = [], tree = this.root) {
+	levelOrder(callback, array = [], queue = [], tree = this.root) {
 		if (tree === null) return;
 		array.push(tree.value);
 		queue.push(tree.left);
 		queue.push(tree.right);
+		if (callback) {
+			callback(tree);
+		}
 
 		while (queue.length) {
 			const current = queue.shift();
-			this.levelOrder(array, queue, current);
+			this.levelOrder(callback, array, queue, current);
+		}
+		if (!callback) {
+			return array;
+		}
+	}
+
+	inOrder(array = [], queue = [], tree = this.root) {
+		if (tree === null) return;
+		this.inOrder(array, queue, tree.left);
+		queue.push(tree.value);
+		this.inOrder(array, queue, tree.right);
+
+		while (queue.length > 0) {
+			array.push(queue.shift());
+		}
+		return array;
+	}
+
+	preOrder(array = [], queue = [], tree = this.root) {
+		if (tree === null) return;
+		queue.push(tree.value);
+		this.preOrder(array, queue, tree.left);
+		this.preOrder(array, queue, tree.right);
+
+		while (queue.length > 0) {
+			array.push(queue.shift());
+		}
+		return array;
+	}
+
+	postOrder(array = [], queue = [], tree = this.root) {
+		if (tree === null) return;
+		this.postOrder(array, queue, tree.left);
+		this.postOrder(array, queue, tree.right);
+		queue.push(tree.value);
+
+		while (queue.length > 0) {
+			array.push(queue.shift());
 		}
 		return array;
 	}
