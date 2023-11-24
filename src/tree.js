@@ -67,17 +67,34 @@ export default class Tree {
 		}
 	}
 
-	find(value, tree) {
+	find(value, tree = this.root) {
+		if (value === tree.value || tree === null) return tree;
 		if (value < tree.value) {
-			tree.left = this.find(value, tree.left);
-			return tree.left;
+			return this.find(value, tree.left);
 		}
 		if (tree.value < value) {
-			tree.right = this.find(value, tree.right);
-			return tree.right;
+			return this.find(value, tree.right);
 		}
-		if (value === tree.value) {
-			return tree;
+	}
+
+	height(node) {
+		if (node === null) return 0;
+		const leftHeight = this.height(node.left);
+		const rightHeight = this.height(node.right);
+		if (leftHeight > rightHeight) {
+			return leftHeight + 1;
+		}
+		return rightHeight + 1;
+	}
+
+	depth(node, tree = this.root, i = 0) {
+		if (node === null || tree === null) return;
+		if (node === tree) return i;
+		if (node.value < tree.value) {
+			return this.depth(node, tree.left, ++i);
+		}
+		if (node.value > tree.value) {
+			return this.depth(node, tree.right, ++i);
 		}
 	}
 }

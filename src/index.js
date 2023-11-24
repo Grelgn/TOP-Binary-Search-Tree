@@ -22,4 +22,11 @@ tree.delete(2, tree.root);
 console.log(tree.root);
 prettyPrint(tree.root);
 
-console.log(tree.find(23, tree.root));
+console.log(tree.find(23));
+
+console.log(tree.height(tree.root));
+console.log(tree.height(tree.find(23)));
+
+console.log(tree.depth(tree.find(486)));
+console.log(tree.depth(tree.find(7)));
+// tree.depth(tree.find(23, tree.root));
