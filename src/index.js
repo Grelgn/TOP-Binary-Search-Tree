@@ -1,47 +1,40 @@
 import Tree from "./tree";
 import prettyPrint from "./prettyPrint";
 
-const test = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+function randomArray(size) {
+	const array = [];
+	for (let i = 0; i < size; i++) {
+		array.push(Math.floor(Math.random() * 100) + 1);
+	}
+	return array;
+}
 
-const tree = new Tree(test);
-console.log(tree.array);
-console.log(tree.root);
+const array = randomArray(25);
+const tree = new Tree(array);
+console.log(array)
 prettyPrint(tree.root);
-
-tree.insert(12, tree.root);
-tree.insert(68, tree.root);
-tree.insert(2, tree.root);
-tree.insert(486, tree.root);
-console.log(tree.root);
-prettyPrint(tree.root);
-
-tree.delete(67, tree.root);
-tree.delete(4, tree.root);
-tree.delete(6345, tree.root);
-tree.delete(2, tree.root);
-console.log(tree.root);
-prettyPrint(tree.root);
-
-console.log(tree.find(23));
-
-console.log(tree.height(tree.root));
-console.log(tree.height(tree.find(23)));
-
-console.log(tree.depth(tree.find(486)));
-console.log(tree.depth(tree.find(7)));
+console.log(tree.isBalanced());
 
 console.log(tree.levelOrder());
-
-console.log(tree.inOrder());
 console.log(tree.preOrder());
 console.log(tree.postOrder());
+console.log(tree.inOrder());
 
-console.log(tree.isBalanced());
-tree.insert(48, tree.root);
-tree.insert(32, tree.root);
-tree.insert(6, tree.root);
+function insertMore(size) {
+    for (let i = 0; i < size; i++) {
+        tree.insert(Math.floor(Math.random() * 100) + 101);
+    }
+}
+
+insertMore(6);
 prettyPrint(tree.root);
 console.log(tree.isBalanced());
 
 tree.rebalance();
 prettyPrint(tree.root);
+console.log(tree.isBalanced());
+
+console.log(tree.levelOrder());
+console.log(tree.preOrder());
+console.log(tree.postOrder());
+console.log(tree.inOrder());

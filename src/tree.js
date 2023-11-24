@@ -24,7 +24,7 @@ export default class Tree {
 		return new Node(number, arrayLeft, arrayRight);
 	}
 
-	insert(value, tree) {
+	insert(value, tree = this.root) {
 		if (value === tree.value) return;
 		if (value < tree.value) {
 			if (tree.left === null) {
@@ -39,7 +39,7 @@ export default class Tree {
 		}
 	}
 
-	delete(value, tree) {
+	delete(value, tree = this.root) {
 		if (value < tree.value) {
 			tree.left = this.delete(value, tree.left);
 			return tree;
@@ -165,9 +165,9 @@ export default class Tree {
 			this.isBalanced(tree.right, array);
 		}
 		if (array.includes(0)) {
-			return false;
+			return "Tree is NOT BALANCED.";
 		}
-		return true;
+		return "Tree is BALANCED.";
 	}
 
 	rebalance() {
